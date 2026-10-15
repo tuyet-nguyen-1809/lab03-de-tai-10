@@ -10,7 +10,7 @@ function e(string $value): string {
 function validateRegistration(array $input, array $events): array {
     $eventId = filter_var(field($input, 'event_id'), FILTER_VALIDATE_INT);
     $name = field($input, 'name');
-    $email = strtolower(field($input, 'email')); // Quy ước riêng của mẫu lớp học.
+    $email = strtolower(field($input, 'email'));
     $errors = [];
     if ($eventId === false || !in_array($eventId, array_column($events, 'id'), true)) {
         $errors[] = 'EVENT_INVALID';

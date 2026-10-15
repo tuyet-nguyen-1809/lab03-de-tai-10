@@ -4,12 +4,15 @@ declare(strict_types=1);
 function filterEvents(array $events, string $query, string $category = '',
     bool $availableOnly = false): array
 {
-    // TODO phần mở rộng: thêm category và availableOnly bằng AND.
     $result = [];
     foreach ($events as $event) {
-        $matches = $query === ''
+        $matchQuery = $query === ''
             || stripos($event['title'], $query) !== false;
-        if ($matches) {
+        $matchCategory = $category === ''
+            || $event['category'] === $category;
+        $matchAvailable = !$availableOnly
+            || $event['capacity'] - $event['registered'] > 0;
+        if ($matchQuery && $matchCategory && $matchAvailable) {
             $result[] = $event;
         }
     }

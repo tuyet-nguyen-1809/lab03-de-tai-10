@@ -1,16 +1,15 @@
 <?php
-// Read-only presentation helpers. No session, database mutation or registration policy.
 function uiImage(string $filename): string {
     $allowed = ['connect.svg','workshop.svg','acoustic.svg','career.svg','online.svg',
         'exhibition.svg','connect-room.svg','connect-lab.svg','acoustic-stage.svg',
-        'acoustic-lounge.svg','fallback.svg'];
+        'acoustic-lounge.svg','fallback.svg','warehouse.svg'];
     return '/assets/images/' . (in_array($filename, $allowed, true) ? $filename : 'fallback.svg');
 }
 function uiContent(int $id): array {
     static $content;
     $content ??= require __DIR__ . '/../data/event-content.php';
     return $content[$id] ?? [
-        'image'=>'fallback.svg','alt'=>'Minh họa sự kiện chưa có nội dung bổ sung',
+        'image'=>'fallback.svg','alt'=>'Minh họa mặt hàng chưa có nội dung bổ sung',
         'summary'=>'Chưa có nội dung bổ sung cho sự kiện này.',
         'intro'=>'Thông tin nghiệp vụ vẫn lấy từ dữ liệu gốc của lab.',
         'start'=>'','end'=>'','timezone'=>'Asia/Ho_Chi_Minh (UTC+07:00)',

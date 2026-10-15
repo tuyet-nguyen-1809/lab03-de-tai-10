@@ -1,6 +1,22 @@
-# Lab 03 — Hiển thị sự kiện, tìm kiếm và xử lý form
+# Lab 03 — Đề tài 10: Quản lý kho, điều chuyển hàng và kiểm kê tại nhiều điểm
 
-Mã mẫu cho phần hướng dẫn và mã khởi đầu cho bài tự làm.
+Bài Lab 03 áp dụng cho đề tài 10. Dựa trên mã mẫu CommunityPass, đã đổi:
+
+- `data/events.php`: 3 mặt hàng tồn tại 3 điểm kho (Hà Nội, Đà Nẵng, TP.HCM). `capacity` = tồn kho, `registered` = đã giữ cho phiếu điều chuyển, `category` = loại hàng (`dien-tu`, `noi-that`).
+- `src/EventFilter.php`: lọc kết hợp từ khóa (tên hàng/tên kho) AND loại hàng AND còn hàng.
+- `public/index.php`: trang tồn kho có ô từ khóa, chọn loại, ô "chỉ hàng còn có thể điều chuyển"; giữ lựa chọn sau khi gửi.
+- `public/register.php`: form POST "Lập phiếu điều chuyển", kiểm tra ở máy chủ, chỉ xem trước (`PREVIEW_OK`).
+- `tests/run.php`, `tests/extension.php`: giữ nguyên số ca (7 và 8), đổi từ khóa/loại theo dữ liệu mới.
+
+| Bộ lọc | ID trả về |
+| --- | --- |
+| Không lọc | 1, 2, 3 |
+| `laptop` | 1 |
+| Loại `dien-tu` | 1, 3 |
+| Chỉ còn hàng | 1, 3 |
+| `hcm` + `dien-tu` + còn hàng | 3 |
+| `noi-that` + còn hàng | rỗng |
+| Loại không tồn tại | rỗng |
 
 ## Mở bài
 

@@ -1,6 +1,4 @@
 <?php
-// Six fixed fictional events. None of these IDs belongs in the lab database.
-// Statuses are authored for the demo reference date 2026-10-14, not calculated live.
 return [
  'demo-open-source' => [
  'id'=>'demo-open-source','title'=>'Open Source Connect','category'=>'Hội thảo',

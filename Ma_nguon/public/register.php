@@ -8,11 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require __DIR__ . '/../templates/header.php';
 ?>
 <div class="page-heading">
-<h1>Đăng ký tham dự</h1>
-<p>Điền thông tin để kiểm tra và xem trước. Chưa lưu đăng ký.</p>
+<h1>Lập phiếu điều chuyển hàng</h1>
+<p>Chọn mặt hàng, nhập người lập phiếu để kiểm tra và xem trước. Chưa lưu phiếu, chưa trừ kho.</p>
 </div>
 <form class="registration-form" method="post">
-    <label class="form-field" for="event_id">Sự kiện
+    <label class="form-field" for="event_id">Mặt hàng (tại kho xuất)
 <select id="event_id" name="event_id">
             <?php foreach ($events as $event): ?>
                 <option value="<?= $event['id'] ?>">
@@ -21,11 +21,11 @@ require __DIR__ . '/../templates/header.php';
             <?php endforeach; ?>
         </select>
     </label>
-    <label class="form-field" for="name">Họ tên
+    <label class="form-field" for="name">Người lập phiếu
 <input id="name" name="name" maxlength="120"
                value="<?= e(field($_POST, 'name')) ?>">
     </label>
-    <label class="form-field" for="email">Email
+    <label class="form-field" for="email">Email người lập
 <input id="email" name="email"
                value="<?= e(field($_POST, 'email')) ?>">
     </label>
@@ -39,10 +39,10 @@ require __DIR__ . '/../templates/header.php';
 </div>
     <?php else: ?>
         <section class="preview" role="status">
-<h2>Xem trước thông tin</h2>
+<h2>Xem trước phiếu điều chuyển</h2>
 <p class="status-message">PREVIEW_OK: <?= e($result['data']['name']) ?>
             — <?= e($result['data']['email']) ?></p>
-        <p>Chỉ xem trước; chưa lưu Session hoặc CSDL.</p>
+        <p>Chỉ xem trước; chưa lưu Session hoặc CSDL, chưa trừ tồn kho.</p>
 </section>
     <?php endif; ?>
 <?php endif; ?>
